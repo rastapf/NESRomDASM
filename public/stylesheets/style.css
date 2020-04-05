@@ -1,0 +1,71 @@
+:root {
+  --headerHeight: 20vh;
+  --footerHeight: 15vh;
+}
+
+html, body, *, input, button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #00B7FF;
+  cursor: pointer;
+}
+
+header {
+  height: var(--headerHeight);
+  width: 100vw;
+  background-color: #00B7FF;
+  border-bottom: 5px solid #FFB700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* Style configuration of the paragraphs and forms from the index will be here */
+
+#resultsWindow {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#resultsWindow .result {
+  min-height: 200px;
+  max-height: 80%;
+  width: 40%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  border: 5px solid gray;
+  border-radius: 5px;
+  overflow-y: auto;
+}
+
+footer {
+  height: var(--footerHeight);
+  width: 100vw;
+  background-color: #00B7FF;
+  border-top: 5px solid #FFB700;
+}

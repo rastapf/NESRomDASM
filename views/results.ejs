@@ -1,0 +1,69 @@
+<!-- Loads Head + Meta tags files -->
+<%- include('./includes/head') %>
+  
+  <!-- Loads common header element to the page -->
+  <%- include('./includes/header') %>
+  
+  <h2><%= romName %></h2>
+  <main id='resultsWindow'>
+    <section class='result'>
+      <table>
+          <tr>
+              <th>Offset (h)</th>
+              <th>00</th>
+              <th>01</th>
+              <th>02</th>
+              <th>03</th>
+              <th>04</th>
+              <th>05</th>
+              <th>06</th>
+              <th>07</th>
+              <th>08</th>
+              <th>09</th>
+              <th>0A</th>
+              <th>0B</th>
+              <th>0C</th>
+              <th>0D</th>
+              <th>0E</th>
+              <th>0F</th>
+          </tr>
+          <% bufferedFile.forEach((byte, index) => { %>
+            <% const headerLength = (bufferedFile.length / 16).toString(16).length + 1 %>
+            <% if((index % 16) == 0) { %>
+                <tr>
+                    <% if(index.toString(16).length < headerLength) { %>
+                        <th><%= '0'.repeat(headerLength - index.toString(16).length) + index.toString(16).toUpperCase() %></th>
+                    <% } else { %>
+                        <th><%= index.toString(16).toUpperCase() %></th>
+                    <% } %>
+                    <% if(byte.toString(16).length == 1) { %>
+                        <td><%= '0' + byte.toString(16).toUpperCase() %></td>
+                    <% } else { %>
+                        <td><%= byte.toString(16).toUpperCase() %></td>                    
+                    <% } %>                    
+            <% } else if ((index % 16) == 15) { %>
+                <% if(byte.toString(16).length == 1) { %>
+                    <td><%= '0' + byte.toString(16).toUpperCase() %></td>
+                <% } else { %>
+                    <td><%= byte.toString(16).toUpperCase() %></td>                    
+                <% } %>                    
+                </tr>
+            <% } else { %>
+                <% if(byte.toString(16).length == 1) { %>
+                    <td><%= '0' + byte.toString(16).toUpperCase() %></td>
+                <% } else { %>
+                    <td><%= byte.toString(16).toUpperCase() %></td>                    
+                <% } %>                    
+          <% }}); %>     
+      </table>
+    </section>
+    <section class='result'>
+        <p>ASM code will appear here</p>
+        <p>ASM code will appear here</p>
+        <p>ASM code will appear here</p>
+        <p>ASM code will appear here</p>
+      </section>
+  </main>
+
+<!-- Loads Footer + HTML closing tags -->
+<%- include('./includes/footer') %>

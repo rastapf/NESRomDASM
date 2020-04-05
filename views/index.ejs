@@ -1,0 +1,22 @@
+<!-- Loads Head + Meta tags files -->
+<%- include('./includes/head') %>
+  
+  <!-- Loads common header element to the page -->
+  <%- include('./includes/header') %>
+  
+  <main>
+    <article>
+      <p>This NES Rom Disassembler was created as a personal project to allow me to get a better grasp on how ASM programming works, as well as practicing my NodeJS development skills.</p>
+      <p>The project has no commercial intent and its code is open to anyone willing to check it on my GitHub account.</p>
+      <p>In order to use it, just upload your personal ROM with the file selector below, it should process it and return the screen with the results.</p>
+      <p>No files uploaded are retained in any way by this system. After processing any possible traces needed for processing are removed from the server.</p>
+    </article>
+    <form action='' method='POST' enctype='multipart/form-data'>
+      <label for='romfile'>Upload your personal ROM here: </label>
+      <input type='file' id='romfile' name='romfile'>
+      <button type='submit'>Upload</button>
+    </form>
+  </main>
+
+<!-- Loads Footer + HTML closing tags -->
+<%- include('./includes/footer') %>
