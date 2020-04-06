@@ -1,6 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 
+const binaryReadController = require('../controllers/binaryReadController');
+
 const router = express.Router();
 
 /* Setting up multer */
@@ -12,12 +14,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'NES Rom Disassembler' });
 });
 
-router.post('/', upload.single('romfile'), function(req, res, next) {
-  const romName = req.file.originalname;
-  const bufferedFile = req.file.buffer;
-  const rows = bufferedFile.length / 16;
-
-  res.render('results', {title: `NES Rom Disassembler ${romName}`, romName, bufferedFile, rows})
-})
+router.post('/', upload.single('romfile'), binaryReadController.binaryRead);
 
 module.exports = router;
